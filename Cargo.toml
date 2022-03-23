@@ -1,0 +1,26 @@
+[package]
+name = "gwmp-mux"
+version = "0.9.3"
+authors = ["Louis Thiery <thiery.louis@gmail.com>"]
+edition = "2021"
+description = "Semtech UDP provides serialization and deserialization of packets complying with the Semtech UDP protocol"
+license = "Apache-2.0"
+keywords = ["lorawan", "iot", "lpwan", "semtech", "gwmp"]
+repository = "https://github.com/helium/semtech-udp/"
+
+
+[dependencies]
+semtech-udp = { version  = "0", features = ["server", "client"] }
+tokio = { version = "1", features = ["sync", "io-util", "signal", "io-std"]}
+structopt = { version = "0.3.2", default-features = false }
+slog = "2"
+slog-async = "2"
+slog-term = "2"
+slog-syslog = "0"
+slog-scope = "4"
+slog-stdlog = "4"
+thiserror = "1"
+triggered  = "0"
+
+
+

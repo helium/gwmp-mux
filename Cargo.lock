@@ -123,7 +123,7 @@ dependencies = [
 
 [[package]]
 name = "gwmp-mux"
-version = "0.9.3"
+version = "0.9.4"
 dependencies = [
  "semtech-udp",
  "slog",

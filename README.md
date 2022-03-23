@@ -1,3 +1,5 @@
+[![Continuous Integration](https://github.com/helium/gwmp-mux/actions/workflows/rust.yml/badge.svg)](https://github.com/helium/gwmp-mux/actions/workflows/rust.yml)
+
 # gwmp-mux
 
 GWMP is a **G**ate**W**ay **M**essaging **P**rotocol used by LoRa packet

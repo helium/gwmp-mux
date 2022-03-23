@@ -34,7 +34,7 @@ jobs:
           args: --all-features
 
       - name: Unit tests
-        run: cargo test --features server,client
+        run: cargo test 
 
       - name: Build
         run: cargo build --all --release

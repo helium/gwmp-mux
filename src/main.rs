@@ -15,8 +15,8 @@ use tokio::{io::AsyncReadExt, signal, time::Duration};
 mod gwmp_mux;
 use gwmp_mux::*;
 
-mod app_error;
-use app_error::Error;
+mod errors;
+use errors::Error;
 
 pub type Result<T = ()> = std::result::Result<T, Error>;
 

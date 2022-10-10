@@ -150,7 +150,7 @@ async fn run_client_instance(
 }
 
 async fn run_client_instance_handle_downlink(
-    mac: semtech_udp::MacAddress,
+    mac: MacAddress,
     mut receiver: client_runtime::ClientRx,
     mut client_tx: server_runtime::ClientTx,
 ) -> Result {
@@ -179,7 +179,7 @@ async fn run_client_instance_handle_downlink(
                             downlink_request.nack(tx_ack::Error::SendFail).await
                         }
                         Ok(()) => {
-                            debug!(&logger, "Downlink to {mac} successful");
+                            info!(&logger, "Downlink to {mac} successful");
                             downlink_request.ack().await
                         }
                         Err(e) => {
@@ -187,7 +187,7 @@ async fn run_client_instance_handle_downlink(
                             Ok(())
                         }
                     } {
-                        debug!(&logger, "Error sending downlink to {mac}: {e}");
+                        error!(&logger, "Error sending downlink to {mac}: {e}");
                     }
                 });
             }

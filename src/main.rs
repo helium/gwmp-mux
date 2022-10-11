@@ -45,14 +45,13 @@ fn main() {
     let logger = mk_logger(cli.log_level, cli.disable_timestamp);
     let scope_guard = slog_scope::set_global_logger(logger);
     let logger = slog_scope::logger().new(o!());
-
-    let _log_guard = slog_stdlog::init().unwrap();
+    slog_stdlog::init().unwrap();
 
     let runtime = tokio::runtime::Builder::new_current_thread()
         .enable_all()
         .build()
         .unwrap();
-    let res = runtime.block_on(async move {
+    runtime.block_on(async move {
         let (shutdown_trigger, shutdown_signal) = triggered::trigger();
 
         let handle = tokio::spawn(async move {
@@ -65,14 +64,13 @@ fn main() {
         watch_for_shutdown().await;
         info!(&logger, "Triggering gwmp-mux shutdown");
         shutdown_trigger.trigger();
-        let _ = handle
+        handle
             .await
             .expect("Error awaiting host_and_mux_sup shutdown");
         info!(&logger, "Shutdown complete");
     });
     runtime.shutdown_timeout(Duration::from_secs(0));
     drop(scope_guard);
-    res
 }
 
 async fn watch_for_shutdown() {

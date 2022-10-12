@@ -178,8 +178,12 @@ async fn run_client_instance_handle_downlink(
                             );
                             downlink_request.nack(tx_ack::Error::SendFail).await
                         }
-                        Ok(()) => {
-                            info!(&logger, "Downlink to {mac} successful");
+                        Ok(tmst) => {
+                            if let Some(tmst) = tmst {
+                                info!(&logger, "Downlink to {mac} successful @ tmst: {tmst}");
+                            } else {
+                                info!(&logger, "Downlink to {mac} successful");
+                            }
                             downlink_request.ack().await
                         }
                         Err(e) => {

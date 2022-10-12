@@ -1,6 +1,6 @@
 [package]
 name = "gwmp-mux"
-version = "0.9.6"
+version = "0.9.7"
 authors = ["Louis Thiery <thiery.louis@gmail.com>"]
 edition = "2021"
 description = "Multiplexer for Semtech's GWMP over UDP"
